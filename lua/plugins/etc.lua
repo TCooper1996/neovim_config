@@ -1,5 +1,16 @@
 return {
+{'akinsho/toggleterm.nvim', version = "*", config = function ()
+  require'toggleterm'.setup{
+    open_mapping = '<D-1>',
+    on_create = function (t)
+      local s = t.id
+      vim.cmd(':1TermExec cmd="fish && clear"'.. s)
+      
+    end
+  }
+end},
   { "tpope/vim-commentary" },
+  { "tpope/vim-surround" },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -7,11 +18,10 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "F",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
       { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
       { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+      --{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
   {
