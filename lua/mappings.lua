@@ -32,6 +32,7 @@ f = {
   name = 'Find',
   k = { '<cmd>Telescope keymaps<cr>', "Find Keymaps" },
   f = { '<cmd>Telescope find_files<cr>', "Find Files" },
+  p = { function() require'telescope.builtin'.find_files{search_dirs = {'~/.config/nvim/lua/plugins'}}end, "Find Plugins" },
   g = { '<cmd>Telescope live_grep<cr>', "Live Grep" },
   b = { '<cmd>Telescope buffers<cr>', "Find Buffer" },
   s = { '<cmd>SessionManager load_session<cr>', 'Find Session' },
